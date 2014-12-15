@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nCode Image Reziser\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2009-09-28 11:29+0200\n"
+"Last-Translator: Osakana Taro <osakana@osakana.net>\n"
+"Language-Team: Osakana taro <osakana@osakana.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Japan\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: ncode-image-resizer
+msgid "nCode Settings"
+msgstr "nCode 設定"
+
+#: ncode-image-resizer
+#msgid "Cheatin&#8217; uh?"
+#msgstr "Hile mi yapıyorsun&#8217; hı?"
+
+#: ncode-image-resizer
+msgid "You do not have sufficient permissions to access this page"
+msgstr "このページにアクセスする権限がありません"
+
+#: ncode-image-resizer
+msgid "Keep original size"
+msgstr "元の大きさを保つ"
+
+#: ncode-image-resizer
+msgid "Enlarge in same window"
+msgstr "同じウィンドウで拡大表示"
+
+#: ncode-image-resizer
+msgid "Open in same window"
+msgstr "同じウィンドウで開く"
+
+#: ncode-image-resizer
+msgid "Open in new window"
+msgstr "新しいウィンドウで開く"
+
+#: ncode-image-resizer
+msgid "Open in modal window"
+msgstr "モーダルウィンドウで開く"
+
+#: ncode-image-resizer
+msgid "Maximum width must be numeric"
+msgstr "最大幅は数値で指定してください"
+
+#: ncode-image-resizer
+msgid "Maximum height must be numeric"
+msgstr "最大高さは数値で指定してください"
+
+#: ncode-image-resizer
+msgid "Options updated"
+msgstr "オプションを更新しました"
+
+#: ncode-image-resizer
+msgid "Images in posts"
+msgstr "投稿内の画像"
+
+#: ncode-image-resizer
+msgid "This blog automatically resizes images which are too large. Please choose here how you would like to view the enlarged images."
+msgstr "このブログでは大きなサイズの画像は自動的に調整されます。どれくらいの大きさで表示したいかを選択してください。"
+
+#: ncode-image-resizer
+msgid "Maximum width"
+msgstr "最大幅"
+
+#: ncode-image-resizer
+msgid "Images taller than this width will be resized. Enter 0 to allow all widths, or leave the field empty to use the default value."
+msgstr "画像を指定の幅で変更します。0は制限無し、数値無しは標準値です"
+
+#: ncode-image-resizer
+msgid "Maximum height"
+msgstr "最大高さ"
+
+#: ncode-image-resizer
+msgid "Images taller than this height will be resized. Enter 0 to allow all heights, or leave the field empty to use the default value."
+msgstr "画像を指定の高さで変更します。0は制限無し、数値無しは標準値です"
+
+#: ncode-image-resizer
+msgid "Save Changes"
+msgstr "変更の保存"
+
+#: ncode-image-resizer
+msgid "Click this bar to view the full image."
+msgstr "ここをクリックすると画像が大きくなります"
+
+#: ncode-image-resizer
+msgid "This image has been resized. Click this bar to view the full image. The original image is sized %1$sx%2$spx and weights %3$sKB."
+msgstr "画像サイズが変更されました。クリックで大きくなります。元のサイズは %1$sx%2$spx で、容量は %3$sKBでした。"
+
+#: ncode-image-resizer
+msgid "This image has been resized. Click this bar to view the full image. The original image is sized %1$sx%2$spx."
+msgstr "画像サイズが変更されました。クリックで大きくなります。 元のサイズは %1$sx%2$spxでした。"
+
+#: ncode-image-resizer
+msgid "Click this bar to view the small image."
+msgstr "ここをクリックすると画像が小さくなります"
+

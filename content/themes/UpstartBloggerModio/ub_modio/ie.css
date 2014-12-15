@@ -1,0 +1,28 @@
+/* @group Sidebar */
+
+#sidebar {
+	position: absolute;
+	top: 5px;
+	left: 0px;
+	padding: 10px;
+	color: #fff;
+	text-align: right;
+	font-weight: bold;
+	width: 160px;
+}
+
+#sidebar p.menu {
+	background-color: #f31b1b;
+	padding: 5px;
+	font-weight: bold;
+	color: #fff;
+	position: relative;
+	left: -20px;
+	width: 200px
+}
+
+
+#sidebar:hover {
+	
+}
+/* @end */

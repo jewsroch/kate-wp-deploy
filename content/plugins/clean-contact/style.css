@@ -1,0 +1,8 @@
+.CleanContact { text-align: left; width: 100%; display: block; border:0; padding-top: 1em; }
+.CleanContact input[type="text"] { width: 100%; margin: .5em 0 1.3em 0; background-color: #FF2B06; border: none; padding: .8em 0 .8em .8em; color:#fff; font-size:1.2em;}
+.CleanContact label { clear: none; display: inline; text-align: left; font-size:1.5em;}
+.CleanContact textarea{ width: 100%; height: 15em; margin: .5em 0; background-color: #FF2B06; border: none; padding: .8em 0 .8em .8em; color:#fff; font-size:1.2em;}
+.CleanContact label em { font-weight: bold; font-style: normal; color: red; }
+.CleanContact_msg { font-weight: bold;  padding: 1em; -moz-border-radius: 5px; -webkit-border-radius: 5px;  }
+.CleanContact_msg.ok{ background-color: #8dff87; border: solid 1px #e6f4d7; color: #000; margin: 2em 0 2em 0;}
+.CleanContact_msg.err{ background-color: #ff9595; border: solid 1px #fff; color: #000;}

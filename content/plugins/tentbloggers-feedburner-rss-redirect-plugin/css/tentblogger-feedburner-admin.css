@@ -1,0 +1,11 @@
+
+.tentblogger-hndle { padding: 1em; margin-top: 0em; }
+.tentblogger-postbox .tentblogger-inside { padding: 1em; margin-top: -1em; }
+.tentblogger-postbox .tentblogger-inside a { text-decoration: none; }
+
+.tentblogger-postbox fieldset { padding: 2em; border: 1px solid #eee; width: 35em; margin: 0 0 1em 1em;  }
+.tentblogger-postbox legend { font-weight: bold; font-size: 1.5em; }
+
+#tentblogger-feedburner-configuraton label { font-weight: bold; width: 26em; display: block; margin-bottom: 0.5em; }
+#tentblogger-feedburner-configuraton input[type=text] { width: 30em; }
+#tentblogger-feedburner-configuraton input:focus { background: #eee; }

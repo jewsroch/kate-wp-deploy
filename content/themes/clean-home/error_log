@@ -1,0 +1,5 @@
+[07-Oct-2012 10:12:05] PHP Fatal error:  Call to undefined function  get_header() in /home1/spicyfis/public_html/katekorroch/wp-content/themes/clean-home/index.php on line 2
+[29-Dec-2012 19:48:59] PHP Fatal error:  Call to undefined function  get_header() in /home1/spicyfis/public_html/katekorroch/wp-content/themes/clean-home/index.php on line 2
+[29-Dec-2012 20:13:19] PHP Fatal error:  Call to undefined function  get_header() in /home1/spicyfis/public_html/katekorroch/wp-content/themes/clean-home/index.php on line 2
+[29-Dec-2012 20:35:43] PHP Fatal error:  Call to undefined function  get_header() in /home1/spicyfis/public_html/katekorroch/wp-content/themes/clean-home/index.php on line 2
+[29-Dec-2012 20:59:10] PHP Fatal error:  Call to undefined function  get_header() in /home1/spicyfis/public_html/katekorroch/wp-content/themes/clean-home/index.php on line 2
