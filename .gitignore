@@ -29,7 +29,7 @@ wp-config.php
 
 # Misc #
 ###################
-
+config/nginx/*
 _assets
 node_modules
 ai-cache/*
