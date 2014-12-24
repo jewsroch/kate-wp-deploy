@@ -12,6 +12,10 @@
 function jetpack_photon_url( $image_url, $args = array(), $scheme = null ) {
 	$image_url = trim( $image_url );
 
+	if ( false !== apply_filters( 'jetpack_photon_skip_for_url', false, $image_url, $args, $scheme ) ) {
+		return $image_url;
+	}
+
 	$image_url = apply_filters( 'jetpack_photon_pre_image_url', $image_url, $args,      $scheme );
 	$args      = apply_filters( 'jetpack_photon_pre_args',      $args,      $image_url, $scheme );
 
@@ -80,7 +84,7 @@ function jetpack_photon_url( $image_url, $args = array(), $scheme = null ) {
 
 	return jetpack_photon_url_scheme( $photon_url, $scheme );
 }
-
+add_filter( 'jetpack_photon_url', 'jetpack_photon_url', 10, 3 );
 
 /**
  * WordPress.com

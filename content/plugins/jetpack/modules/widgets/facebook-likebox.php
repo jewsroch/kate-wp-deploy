@@ -18,9 +18,9 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 
 	private $default_height       = 432;
 	private $default_width        = 200;
-	private $max_width            = 400;
+	private $max_width            = 9999;
 	private $min_width            = 0;
-	private $max_height           = 999;
+	private $max_height           = 9999;
 	private $min_height           = 100;
 	private $default_colorscheme  = 'light';
 	private $allowed_colorschemes = array( 'light', 'dark' );
@@ -59,21 +59,29 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 		$like_args['show_faces'] = (bool) $like_args['show_faces']         ? 'true' : 'false';
 		$like_args['stream']     = (bool) $like_args['stream']             ? 'true' : 'false';
 		$like_args['force_wall'] = (bool) $like_args['force_wall']         ? 'true' : 'false';
+		$like_args['show_border']= (bool) $like_args['show_border']        ? 'true' : 'false';
 		$like_args['header']     = (bool) $like_args['header']             ? 'true' : 'false';
-		$like_bg_colour          = ( 'dark' == $like_args['colorscheme'] ) ? '#000' : '#fff';
+		$like_bg_colour          = apply_filters( 'jetpack_fb_likebox_bg', ( 'dark' == $like_args['colorscheme'] ? '#000' : '#fff' ), $like_args['colorscheme'] );
 
 		$locale = $this->get_locale();
 		if ( $locale && 'en_US' != $locale )
 			$like_args['locale'] = $locale;
 
 		$like_args = urlencode_deep( $like_args );
-		$like_url  = add_query_arg( $like_args,  sprintf( '%swww.facebook.com/plugins/likebox.php', ( is_ssl() ) ? 'https://' : 'http://' ) );
+		$like_url  = add_query_arg(
+			$like_args,
+			set_url_scheme( 'http://www.facebook.com/plugins/likebox.php' )
+		);
 
 		echo $before_widget;
 
 		if ( ! empty( $title ) ) :
 			echo $before_title;
-			?><a href="<?php echo esc_url( $page_url ); ?>"><?php echo esc_html( $title ); ?></a><?php
+
+			$likebox_widget_title = '<a href="' . esc_url( $page_url ) . '">' . esc_html( $title ) . '</a>';
+
+			echo apply_filters( 'jetpack_facebook_likebox_title', $likebox_widget_title, $title, $page_url );
+
 			echo $after_title;
 		endif;
 
@@ -100,6 +108,7 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 			'colorscheme' => $new_instance['colorscheme'],
 			'show_faces'  => (bool) $new_instance['show_faces'],
 			'stream'      => (bool) $new_instance['stream'],
+			'show_border' => (bool) $new_instance['show_border'],
 			'header'      => false, // The header just displays "Find us on Facebook"; it's redundant with the title
 			'force_wall'  => (bool) $new_instance['force_wall'],
 		);
@@ -136,14 +145,14 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'width' ); ?>">
 				<?php _e( 'Width', 'jetpack' ); ?>
-				<input type="text" maxlength="3" name="<?php echo $this->get_field_name( 'width' ); ?>" id="<?php echo $this->get_field_id( 'width' ); ?>" value="<?php echo esc_attr( $like_args['width'] ); ?>" style="width: 30px; text-align: center;" />px
+				<input type="number" class="smalltext" min="1" max="999" maxlength="3" name="<?php echo $this->get_field_name( 'width' ); ?>" id="<?php echo $this->get_field_id( 'width' ); ?>" value="<?php echo esc_attr( $like_args['width'] ); ?>" style="text-align: center;" />px
 			</label>
 		</p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'height' ); ?>">
 				<?php _e( 'Height', 'jetpack' ); ?>
-				<input type="text" maxlength="3" name="<?php echo $this->get_field_name( 'height' ); ?>" id="<?php echo $this->get_field_id( 'height' ); ?>" value="<?php echo esc_attr( $like_args['height'] ); ?>" style="width: 30px; text-align: center;" />px
+				<input type="number" class="smalltext" min="1" max="999" maxlength="3" name="<?php echo $this->get_field_name( 'height' ); ?>" id="<?php echo $this->get_field_id( 'height' ); ?>" value="<?php echo esc_attr( $like_args['height'] ); ?>" style="text-align: center;" />px
 			</label>
 		</p>
 
@@ -156,7 +165,6 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 				</select>
 			</label>
 		</p>
-
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'show_faces' ); ?>">
@@ -173,6 +181,15 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 				<?php _e( 'Show Stream', 'jetpack' ); ?>
 				<br />
 				<small><?php _e( 'Show the profile stream for the public profile.', 'jetpack' ); ?></small>
+			</label>
+		</p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'show_border' ); ?>">
+				<input type="checkbox" name="<?php echo $this->get_field_name( 'show_border' ); ?>" id="<?php echo $this->get_field_id( 'show_border' ); ?>" <?php checked( $like_args['show_border'] ); ?> />
+				<?php _e( 'Show Border', 'jetpack' ); ?>
+				<br />
+				<small><?php _e( 'Show a border around the plugin.', 'jetpack' ); ?></small>
 			</label>
 		</p>
 
@@ -196,6 +213,7 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 			'colorscheme' => $this->default_colorscheme,
 			'show_faces'  => true,
 			'stream'      => false,
+			'show_border' => true,
 			'header'      => false,
 			'force_wall'  => false,
 		);
@@ -219,6 +237,7 @@ class WPCOM_Widget_Facebook_LikeBox extends WP_Widget {
 		$args['colorscheme'] = $this->normalize_text_value( $args['colorscheme'], $this->default_colorscheme, $this->allowed_colorschemes        );
 		$args['show_faces']  = (bool) $args['show_faces'];
 		$args['stream']      = (bool) $args['stream'];
+		$args['show_border'] = (bool) $args['show_border'];
 		$args['force_wall']  = (bool) $args['force_wall'];
 
 		// The height used to be dependent on other widget settings

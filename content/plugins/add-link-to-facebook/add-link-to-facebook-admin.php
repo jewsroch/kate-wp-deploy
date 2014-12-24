@@ -2,7 +2,7 @@
 
 /*
 	Support class Add Link to Facebook admin
-	Copyright (c) 2011-2013 by Marcel Bokhorst
+	Copyright (c) 2011-2014 by Marcel Bokhorst
 */
 
 function al2fb_render_admin($al2fb)
@@ -86,6 +86,7 @@ function al2fb_render_admin($al2fb)
 	$like_layout_standard = ($like_layout == 'standard' ? ' checked' : '');
 	$like_layout_button = ($like_layout == 'button_count' ? ' checked' : '');
 	$like_layout_box = ($like_layout == 'box_count' ? ' checked' : '');
+	$like_layout_simple = ($like_layout == 'button' ? ' checked' : '');
 	$like_action = get_user_meta($user_ID, c_al2fb_meta_like_action, true);
 	$like_action_like = ($like_action == 'like' ? ' checked' : '');
 	$like_action_recommend = ($like_action == 'recommend' ? ' checked' : '');
@@ -568,10 +569,10 @@ function al2fb_render_admin($al2fb)
 					_e('This option is only available in', c_al2fb_text_domain);
 					echo ' <a href="http://www.faircode.eu/al2fbpro/?url=' . WPAL2Int::Redirect_uri() . '" target="_blank">Add Link to Facebook Pro</a>';
 					echo '</strong>';
-					$mu = WPAL2Int::Get_multiple_url();
-					if ($mu)
-						echo '<p><span style="color: red;"><strong>' . htmlspecialchars($mu, ENT_QUOTES, $charset) . '</strong></span></p>';
 				}
+				$mu = WPAL2Int::Get_multiple_url();
+				if ($mu)
+					echo '<p><span style="color: red;"><strong>' . htmlspecialchars($mu, ENT_QUOTES, $charset) . '</strong></span></p>';
 ?>
 				</td></tr>
 <?php
@@ -694,16 +695,8 @@ function al2fb_render_admin($al2fb)
 		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value=""<?php echo $priv_none; ?>><?php _e('Default', c_al2fb_text_domain); ?><br />
 		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value="EVERYONE"<?php echo $priv_everyone; ?>><?php _e('Everyone', c_al2fb_text_domain); ?><br />
 		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value="ALL_FRIENDS"<?php echo $priv_friends; ?>><?php _e('All friends', c_al2fb_text_domain); ?><br />
-		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value="NETWORKS_FRIENDS"<?php echo $priv_network; ?>><?php _e('Network friends', c_al2fb_text_domain); ?><br />
 		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value="FRIENDS_OF_FRIENDS"<?php echo $priv_fof; ?>><?php _e('Friends of friends', c_al2fb_text_domain); ?><br />
 		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value="SELF"<?php echo $priv_me; ?>><?php _e('Only me', c_al2fb_text_domain); ?><br />
-		<input type="radio" name="<?php echo c_al2fb_meta_privacy; ?>" value="SOME_FRIENDS"<?php echo $priv_some; ?>><?php _e('Some friends:', c_al2fb_text_domain); ?><br />
-	</td></tr>
-	<tr valign="top"><th scope="row">
-		<label for="al2fb_some_friends"><?php _e('Some friends:', c_al2fb_text_domain); ?></label>
-	</th><td>
-		<input id="al2fb_some_friends" class="al2fb_text" name="<?php echo al2fb_some_friends; ?>" type="text" value="<?php  echo htmlentities(get_user_meta($user_ID, c_al2fb_meta_some_friends, true), ENT_QUOTES, get_bloginfo('charset')); ?>" />
-		<br /><span class="al2fb_explanation"><?php _e('Comma-separated list of Facebook user IDs and friend list IDs', c_al2fb_text_domain); ?></span>
 	</td></tr>
 
 	</table>
@@ -790,6 +783,7 @@ function al2fb_render_admin($al2fb)
 		<input type="radio" name="<?php echo c_al2fb_meta_like_layout; ?>" value="standard"<?php echo $like_layout_standard; ?>><?php _e('Standard', c_al2fb_text_domain); ?><br />
 		<input type="radio" name="<?php echo c_al2fb_meta_like_layout; ?>" value="button_count"<?php echo $like_layout_button; ?>><?php _e('Button with count', c_al2fb_text_domain); ?><br />
 		<input type="radio" name="<?php echo c_al2fb_meta_like_layout; ?>" value="box_count"<?php echo $like_layout_box; ?>><?php _e('Box with count', c_al2fb_text_domain); ?><br />
+		<input type="radio" name="<?php echo c_al2fb_meta_like_layout; ?>" value="button"<?php echo $like_layout_simple; ?>><?php _e('Button', c_al2fb_text_domain); ?><br />
 	</td></tr>
 
 	<tr valign="top"><th scope="row">
@@ -823,6 +817,12 @@ function al2fb_render_admin($al2fb)
 		<label for="al2fb_combine"><?php _e('Combine Facebook like and send buttons:', c_al2fb_text_domain); ?></label>
 	</th><td>
 		<input id="al2fb_combine" name="<?php echo c_al2fb_meta_post_combine_buttons; ?>" type="checkbox"<?php if (get_user_meta($user_ID, c_al2fb_meta_post_combine_buttons, true)) echo ' checked="checked"'; ?> />
+	</td></tr>
+
+	<tr valign="top"><th scope="row">
+		<label for="al2fb_like_share"><?php _e('Share button:', c_al2fb_text_domain); ?></label>
+	</th><td>
+		<input id="al2fb_like_share" name="<?php echo c_al2fb_meta_like_share; ?>" type="checkbox"<?php if (get_user_meta($user_ID, c_al2fb_meta_like_share, true)) echo ' checked="checked"'; ?> />
 	</td></tr>
 
 	</table>
@@ -1602,7 +1602,6 @@ function al2fb_render_resources($al2fb) {
 	<li><a href="http://wordpress.org/extend/plugins/add-link-to-facebook/other_notes/" target="_blank"><?php _e('Setup guide & user manual', c_al2fb_text_domain); ?></a></li>
 	<li><a href="http://wordpress.org/extend/plugins/add-link-to-facebook/faq/" target="_blank"><?php _e('Frequently asked questions', c_al2fb_text_domain); ?></a></li>
 	<li><a href="http://www.faircode.eu/al2fbpro/" target="_blank"><?php _e('Pro version', c_al2fb_text_domain); ?></a></li>
-	<li><a href="http://forum.faircode.eu/" target="_blank"><?php _e('Support page', c_al2fb_text_domain); ?></a></li>
 	<li><a href="<?php echo 'tools.php?page=' . plugin_basename($al2fb->main_file) . '&debug=1'; ?>"><?php _e('Debug information', c_al2fb_text_domain); ?></a></li>
 	<li><a href="http://blog.bokhorst.biz/about/" target="_blank"><?php _e('About the author', c_al2fb_text_domain); ?></a></li>
 	<li><a href="http://wordpress.org/extend/plugins/profile/m66b" target="_blank"><?php _e('Other plugins', c_al2fb_text_domain); ?></a></li>
