@@ -8,7 +8,7 @@ if ( function_exists('register_sidebar') )
         'before_title' => '<h3>',
         'after_title' => '</h3>',
     ));
-	
+
 if ( function_exists('register_sidebar') )
     register_sidebar(array(
 		'name' => 'Blurb',
@@ -27,4 +27,13 @@ register_sidebar(array(
 	'after_title' => '',
 ));
 
-?>
+add_filter( 'got_rewrite', '__return_true' );
+
+
+function remove_version() {
+    return '';
+}
+add_filter('the_generator', 'remove_version');
+
+define('DISALLOW_FILE_EDIT', true);
+remove_action('wp_head', 'wlwmanifest_link');
