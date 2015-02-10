@@ -33,3 +33,5 @@ config/nginx/*
 _assets
 node_modules
 ai-cache/*
+.capistrano
+.cap_tasks~
