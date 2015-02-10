@@ -2,7 +2,7 @@
 
 /*
 	Support class Add Link to Facebook admin
-	Copyright (c) 2011-2014 by Marcel Bokhorst
+	Copyright (c) 2011-2015 by Marcel Bokhorst
 */
 
 function al2fb_render_admin($al2fb)
@@ -179,7 +179,7 @@ function al2fb_render_admin($al2fb)
 			</form>
 		</td>
 <?php
-		if (!get_user_meta($user_ID, c_al2fb_meta_donated, true)) {
+		if (false && !get_user_meta($user_ID, c_al2fb_meta_donated, true)) {
 ?>
 			<td>
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">

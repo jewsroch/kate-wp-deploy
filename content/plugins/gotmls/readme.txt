@@ -5,8 +5,8 @@ Author URI: http://wordpress.ieonly.com/category/my-plugins/anti-malware/
 Contributors: scheeeli, gotmls
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZHD8QHZ2E7PE
 Tags: anti-malware, security, plugin, scan, automatic, repair, remove, malware, virus, threat, hacked, malicious, scripts, infection, timthumb, exploit, block, brute-force, wp-login, patch, antimalware, revslider, Revolution Slider
-Version: 4.14.52
-Stable tag: 4.14.52
+Version: 4.14.59
+Stable tag: 4.14.59
 Requires at least: 3.3
 Tested up to: 4.1
 
@@ -24,7 +24,7 @@ This Anti-Malware plugin searches for Malware and other Virus like threats and s
 * Run a Complete Scan from the Settings Page.
 * Download Definition Updates to protect against new threats.
 
-Updated December 20th
+Updated February 6th
 
 Register this plugin at [GOTMLS.NET](http://gotmls.net/) and get access to new definitions of "Known Threats" and added features like Automatic Removal, plus patches for specific security vulnerabilities like old versions of timthumb. Updated definition files can be downloaded automatically within the admin once your Key is registered. Otherwise, this plugin just scans for "Potential Threats" and leaves it up to you to identify and remove the malicious ones.
 
@@ -88,6 +88,21 @@ sucuri.net caches their scan results and will not refresh the scan until you cli
 5. The Quarantine showing threats that have been fix already.
 
 == Changelog ==
+
+= 4.14.59 =
+* Improved session check for the option to Install Brute-Force Protection and added an error message on failure.
+* Improved support for Multisite by only allowing Network Admins access to the Anti-Malware menu.
+
+= 4.14.55 =
+* Added link to view a simple scan history on the Quarantine page.
+* Updated firewall to better protect agains new variations of the RevSlider Exploit.
+* Improved check for session support before giving the option to Install Brute-Force patch.
+
+= 4.14.54 =
+* Added option to skip scanning the Quarantined files.
+* Updated Brute-Force patch to fix the problem of being included more that once.
+* Fixed a few minor bugs (better window positioning and css, cleaner results page, updated new help tab, etc.).
+* Made sure that the plugin does not check my servers for updates unless you have registered (this opt-in requirement is part of the WordPress Repository Guidelines).
 
 = 4.14.52 =
 * Added exception for the social.png files to the skip files by extension list.
@@ -276,6 +291,15 @@ sucuri.net caches their scan results and will not refresh the scan until you cli
 * First BETA versions available for WordPress.
 
 == Upgrade Notice ==
+
+= 4.14.59 =
+Improved session check for the Brute-Force Protection and support for Multisite menu.
+
+= 4.14.55 =
+Added link to scan history, improved check for session support before giving installing Brute-Force patch, and updated firewall to better protect agains the RevSlider Exploit.
+
+= 4.14.54 =
+Added option to skip scanning the Quarantine, updated Brute-Force patch, and fixed a few minor bugs.
 
 = 4.14.52 =
 Added exception for the social.png files to the skip files by extension list, and fixed removal of Known Threats from files in the Quarantine directory.
