@@ -3,15 +3,15 @@
 ############################################
 
 set :stage, :production
-set :stage_url, "http://chadjewsbury.com"
+set :stage_url, "http://katekorroch.com"
 server "45.55.163.89", user: "serverpilot", roles: %w{web app db}
-set :deploy_to, "/var/www/apps/#{fetch(:application)}"
+set :deploy_to, "apps/#{fetch(:application)}"
 
 ############################################
 # Setup Git
 ############################################
 
-set :branch, "master"
+set :branch, "test-server-pilot"
 
 ############################################
 # Extra Settings
