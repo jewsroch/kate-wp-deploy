@@ -3,8 +3,8 @@
 ############################################
 
 set :stage, :production
-set :stage_url, "http://104.236.188.37"
-server "104.236.188.37", user: "deployer", roles: %w{web app db}, port: 61234
+set :stage_url, "http://chadjewsbury.com"
+server "45.55.163.89", user: "serverpilot", roles: %w{web app db}
 set :deploy_to, "/var/www/apps/#{fetch(:application)}"
 
 ############################################
